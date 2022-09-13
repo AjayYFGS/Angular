@@ -1,0 +1,68 @@
+<h1 mat-dialog-title>Student Form</h1>
+
+<div mat-dialog-content>
+    <form [formGroup]="studentForm">
+    <div class="example-container">
+        <mat-form-field appearance="fill">
+          <mat-label>Enter your FirstName</mat-label>
+          <input matInput placeholder="firstname" formControlName="firstName" required>
+        </mat-form-field>
+    </div>
+
+    <div class="example-container">
+      <mat-form-field appearance="fill">
+        <mat-label>Enter your LastName</mat-label>
+        <input matInput placeholder="lastname" formControlName="lastName" required>
+      </mat-form-field>
+    </div>
+
+    <div class="example-container">
+        <mat-form-field appearance="fill">
+          <mat-label>Enter your Branch</mat-label>
+          <input matInput placeholder="branch" formControlName="branch" required>
+        </mat-form-field>
+    </div>
+
+      <div class="example-container">
+        <mat-form-field appearance="fill">
+          <mat-label>Enter your email</mat-label>
+          <input matInput placeholder="example@gmail.com" formControlName="emailID" required>
+         
+        </mat-form-field>
+      </div>
+
+      <div class="example-container" >
+        <mat-form-field appearance="fill" *ngIf="show">
+          <mat-label>Enter your PassWord</mat-label>
+          <input matInput type="password" placeholder="password"  formControlName="passWord" [type]=" hide ? 'passWord':'text'" required>
+          <i class="material-icons" matSuffix  (click)="hide = ! hide">
+           {{ hide ? 'visibility'  : 'visibility_off'}}
+          </i>
+         
+        </mat-form-field>
+      </div>
+
+      <div class="example-container">
+        <mat-form-field appearance="fill">
+          <mat-label>Enter your PhoneNumer</mat-label>
+          <input matInput placeholder="phoneNumber" maxLength="10"formControlName="phoneNumber" required>
+        </mat-form-field>
+      </div>
+
+
+      <div class="example-container">
+        <mat-form-field appearance="fill">
+          <mat-label>Enter your Address</mat-label>
+          <input matInput placeholder="address" formControlName="address" required>
+        </mat-form-field>
+      </div>
+    </form>
+  </div>
+
+    <div mat-dialog-action [align]="'end'">
+      <button style="margin-right: 10px;" mat-raised-button color="primary" (click)="resetForm()">Reset</button>
+      <button mat-raised-button color="warn" mat-dialog-close>Close</button>
+      <button style="margin-left: 10px;" mat-raised-button color="primary" (click)="saveStudent()" [disabled]="!studentForm.valid" mat-dialog-close>{{actionBtn}}</button>
+
+    </div>
+  
